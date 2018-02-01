@@ -15,6 +15,12 @@ defmodule FlavorDotFlavor.Web.FlavorsController do
         conn
         |> put_status(:created)
         |> render("flavor.json", %{:flavor => flavor})
+        {:error, changeset} ->
+          err = hd changeset.errors
+          detail = elem(err, 1)
+          conn
+          |> put_status(:bad_request)
+          |> render("error.json", %{:field_name => elem(err, 0), :error => elem(detail, 0)})
     end
   end
 end
