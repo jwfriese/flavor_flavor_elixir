@@ -7,6 +7,7 @@ defmodule FlavorDotFlavor.Flavor do
   end
 
   def changeset(struct, params \\ %{}) do
+    IO.inspect params
     struct
     |> cast(params, [:name])
     |> validate_required([:name])

@@ -14,9 +14,10 @@ defmodule FlavorDotFlavor.Web.Router do
   end
 
   scope "/", FlavorDotFlavor.Web do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :api # Use the default browser stack
 
     get "/flavors", FlavorsController, :index
+    post "/flavors", FlavorsController, :create
   end
 
   # Other scopes may use custom stacks.
